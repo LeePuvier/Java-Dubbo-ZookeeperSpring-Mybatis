@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="Java-Learn-Doubbo-Consumer"  />
+
+    <!-- 使用zookeeper做为注册中心 -->
+    <dubbo:registry protocol="zookeeper" address="zookeeper://localhost:2181" />
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- ref中的值要跟服务实现类中的@Server的值一致 -->
+    <dubbo:reference interface="com.leepuvier.dubbo.common.service.UserService" id="userService" check="true" timeout="1200000"></dubbo:reference>
+    <dubbo:reference interface="com.leepuvier.dubbo.common.service.DemoService" id="demoService" check="false" timeout="1200000"></dubbo:reference>
+    <!--<dubbo:annotation package="controller"/>-->
+</beans>

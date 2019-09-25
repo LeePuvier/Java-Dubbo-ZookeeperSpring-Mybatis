@@ -1,0 +1,22 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /
+spring:
+  profiles:
+    active: test
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&&charset=utf8&&loc=Asia%2FShanghai
+    username: root
+    password: 123123123
+    name: test
+
+mybatis:
+  type-aliases-package:  com.leepuvier
+  mapper-locations: classpath:mappers/*.xml

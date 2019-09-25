@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leepuvier.dubbo.provider.mapper.UserMapper">
+
+    <resultMap id="resultMap" type="com.leepuvier.dubbo.common.domin.People">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+    </resultMap>
+
+    <sql id="searchColumn">
+      id,name,age,sex
+    </sql>
+
+    <select id="getOne" resultMap="resultMap">
+        select
+        <include refid="searchColumn"></include>
+        from people where id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="resultMap">
+        select
+        <include refid="searchColumn"></include>
+        from people
+    </select>
+
+</mapper>
