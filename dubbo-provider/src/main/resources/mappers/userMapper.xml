@@ -25,4 +25,10 @@
         from people
     </select>
 
+    <select id="getUserById" resultMap="resultMap">
+        select
+        <include refid="searchColumn"></include>
+        from people where id = #{id}
+    </select>
+
 </mapper>
