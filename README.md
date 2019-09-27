@@ -64,3 +64,16 @@ Java-Dubbo-ZookeeperSpring-Mybatis
 - 查看服务中的接口：ls **Service
 
 - invoke调用服务接口：invoke 接口名称(Json格式出入参数)
+
+# 七、SpringBoot 打包
+
+- 新增配置代码块，位置：provider、consumer-pom.xml
+   ```
+   <plugin>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-maven-plugin</artifactId>
+       <configuration>
+           <executable>true</executable>
+       </configuration>
+   </plugin>
+   ```
