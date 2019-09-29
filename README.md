@@ -106,7 +106,24 @@ Java-Dubbo-ZookeeperSpring-Mybatis
 
 # 九、Dubbo Monitor
 
-    
+- 参考链接（https://blog.csdn.net/fly910905/article/details/86476546）
+
+- 下载dubbo-monitor-simple（）
+
+- dubbo-monitor-simple,dubbo.properties配置
+
+>![dubbo.properties配置](./dubbo-client/images/dubbo_monitor.png)    
+
+- cd dubbo-monitor-simple，执行：mvn clean install -Dmaven.test.skip=true
+
+- cd dubbo-monitor-simple/target, 复制 dubbo-monitor-simple-2.0.0-assembly.tar.gz 至其他目录解压
+
+- cd 解压后目录，sh start.sh start
+
+- 访问地址：http://localhost:4444，监控服务启动成功
+
+- 项目服务提供方、消费方，*.xml新增配置：<dubbo:monitor protocol="registry"></dubbo:monitor>
+
        
 # 十、待做事情
 

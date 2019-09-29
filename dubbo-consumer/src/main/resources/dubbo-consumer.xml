@@ -20,4 +20,7 @@
     <dubbo:reference interface="com.leepuvier.dubbo.common.service.UserService" id="userService" check="true" timeout="1200000"></dubbo:reference>
     <dubbo:reference interface="com.leepuvier.dubbo.common.service.DemoService" id="demoService" check="false" timeout="1200000"></dubbo:reference>
     <!--<dubbo:annotation package="controller"/>-->
+
+    <!--监控中心-->
+    <dubbo:monitor protocol="registry" />
 </beans>

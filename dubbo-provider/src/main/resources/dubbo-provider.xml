@@ -25,6 +25,6 @@
     <dubbo:service interface="com.leepuvier.dubbo.common.service.UserService" ref="userService" timeout="1200000" owner="lipegnjun"></dubbo:service>
     <dubbo:service interface="com.leepuvier.dubbo.common.service.DemoService" ref="demoService" timeout="1200000" owner="lipegnjun"></dubbo:service>
 
-    <!--直连监控中心服务器地址-->
-    <!--<dubbo:monitor protocol="dubbo" address="" />-->
+    <!--监控中心-->
+    <dubbo:monitor protocol="registry" />
 </beans>
