@@ -77,3 +77,55 @@ Java-Dubbo-ZookeeperSpring-Mybatis
        </configuration>
    </plugin>
    ```
+# 八、Dubbo Admin
+
+- 参考文档：Dubbo Admin (https://github.com/apache/dubbo-admin/blob/develop/README_ZH.md)
+
+- 下载源码：git clone https://github.com/apache/dubbo-admin.git
+
+  - 修改Dubbo Admin 控制台端口号，默认为8080，容易与其他服务冲突
+    - dubbo-admin-server/src/main/resources/application.properties
+
+    - 新增：server.port=****
+
+- ZooKeeper 端口号修改，2种方式：
+    
+       （1） zookeeper目录 /conf/zoo.cfg 中新增：admin.serverPort=没有被占用的端口号
+       
+       （2） 启动脚本中增加 -Dzookeeper.admin.serverPort=没有被占用的端口号
+       
+- dubbo-admin-develop目录下，执行 mvn clean package -Dmaven.test.skip=true
+
+- 启动，2种方式：
+
+       （1） mvn --projects dubbo-admin-server spring-boot:run
+        
+       （2） cd dubbo-admin-distribution/target； java -jar dubbo-admin-0.1.jar
+       
+- 访问，http://localhost:${修改Dubbo Admin 控制台端口号}    
+
+# 九、Dubbo Monitor
+
+    
+       
+# 十、待做事情
+
+- Dubbo单元测试
+
+- Dubbo代码覆盖率
+
+- Mock的类型及对比
+
+- Mock的实现原理
+
+- 接入Apollo
+
+- 接入Jenkins
+
+- Dubbo 分布式、负载均衡
+
+- 所在环境自动加载（http://dubbo.apache.org/zh-cn/docs/user/configuration/environment-variables.html）
+
+- Dubbo 架构图
+
+>![终端展示](./dubbo-client/images/dubbo.png)  src="/dubbo-client/images/dubbo.png" width="50%">

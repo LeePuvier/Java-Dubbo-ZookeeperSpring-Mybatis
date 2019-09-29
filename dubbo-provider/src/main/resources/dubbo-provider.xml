@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="Java-Learn-Doubbo-Provider"  />
+    <dubbo:application name="Java-Learn-Doubbo-Provider" organization="LeePuvier" owner="lipengjun" />
 
     <!-- 使用zookeeper做为注册中心 -->
     <!-- 注册中心的ip地址 -->
@@ -22,6 +22,9 @@
     <bean id="demoService" class="com.leepuvier.dubbo.provider.service.impl.DemoServiceImpl" />
 
     <!-- ref中的值要跟服务实现类中的@Server的值一致 -->
-    <dubbo:service interface="com.leepuvier.dubbo.common.service.UserService" ref="userService" timeout="1200000"></dubbo:service>
-    <dubbo:service interface="com.leepuvier.dubbo.common.service.DemoService" ref="demoService"></dubbo:service>
+    <dubbo:service interface="com.leepuvier.dubbo.common.service.UserService" ref="userService" timeout="1200000" owner="lipegnjun"></dubbo:service>
+    <dubbo:service interface="com.leepuvier.dubbo.common.service.DemoService" ref="demoService" timeout="1200000" owner="lipegnjun"></dubbo:service>
+
+    <!--直连监控中心服务器地址-->
+    <!--<dubbo:monitor protocol="dubbo" address="" />-->
 </beans>

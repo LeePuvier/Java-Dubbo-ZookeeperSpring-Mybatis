@@ -15,6 +15,8 @@
         <module>dubbo-consumer</module>
         <!--  服务提供者工程-->
         <module>dubbo-provider</module>
+        <!--Dubbo测试-->
+        <module>dubbo-test</module>
     </modules>
 
     <properties>
