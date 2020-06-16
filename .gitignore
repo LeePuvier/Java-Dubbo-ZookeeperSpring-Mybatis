@@ -28,5 +28,15 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-.DS_Store
-.mvn/
+*.log
+*.eml
+out
+target
+.metadata
+*.DS_Store
+*.lock
+dubbo-registry.propertieslogs
+logs
+log
+target
+test-output

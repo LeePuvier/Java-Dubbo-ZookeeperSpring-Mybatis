@@ -108,6 +108,8 @@ Java-Dubbo-ZookeeperSpring-Mybatis
 
 - 参考链接（https://blog.csdn.net/fly910905/article/details/86476546）
 
+- 参考链接（https://github.com/apache/dubbo-admin/wiki/Dubbo-2.7）
+
 - 下载dubbo-monitor-simple（）
 
 - dubbo-monitor-simple,dubbo.properties配置
@@ -124,8 +126,33 @@ Java-Dubbo-ZookeeperSpring-Mybatis
 
 - 项目服务提供方、消费方，*.xml新增配置：<dubbo:monitor protocol="registry"></dubbo:monitor>
 
+# 十、Dubbo Apollo SpringBoot
+
+>DEV：开发环境
+
+>FAT：测试环境，相当于alpha环境(功能测试)
+
+>UAT：集成环境，相当于beta环境（回归测试）
+
+>PRO：生产环境
+
+- 样例部署图
+
+>![样例部署图](./dubbo-client/images/apollo_deployment.png)
+
+# 十一、Dubbo 工作原理
+
+>![工作原理图](./dubbo-client/images/dubbo-architecture.png)
+
+- 调用关系说明
+- 服务容器负责启动，加载，运行服务提供者。
+- 服务提供者在启动时，向注册中心注册自己提供的服务。
+- 服务消费者在启动时，向注册中心订阅自己所需的服务。
+- 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。
+- 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。
+- 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。
        
-# 十、待做事情
+# *、待做事情
 
 - Dubbo单元测试
 

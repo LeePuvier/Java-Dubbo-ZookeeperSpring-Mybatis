@@ -22,9 +22,12 @@
     <bean id="demoService" class="com.leepuvier.dubbo.provider.service.impl.DemoServiceImpl" />
 
     <!-- ref中的值要跟服务实现类中的@Server的值一致 -->
-    <dubbo:service interface="com.leepuvier.dubbo.common.service.UserService" ref="userService" timeout="1200000" owner="lipegnjun"></dubbo:service>
-    <dubbo:service interface="com.leepuvier.dubbo.common.service.DemoService" ref="demoService" timeout="1200000" owner="lipegnjun"></dubbo:service>
+    <dubbo:service interface="com.leepuvier.dubbo.common.service.UserService" ref="userService" timeout="1200000" owner="lipengjun">
+        <dubbo:method name="getUserById" timeout="150000"/>
+    </dubbo:service>
+    <dubbo:service interface="com.leepuvier.dubbo.common.service.DemoService" ref="demoService" timeout="1200000" owner="lipengjun"></dubbo:service>
 
     <!--监控中心-->
     <dubbo:monitor protocol="registry" />
+
 </beans>
