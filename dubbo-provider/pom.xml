@@ -24,6 +24,7 @@
         <lombok.version>1.18.10</lombok.version>
         <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
         <spring-boot-starter-redis-version>2.1.10.RELEASE</spring-boot-starter-redis-version>
+        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <dependencies>
@@ -165,6 +166,13 @@
             <version>0.8.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>LATEST</version>
+            <scope>test</scope>
+        </dependency>
+
 
 
     </dependencies>
@@ -213,7 +221,23 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <forkMode>once</forkMode>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                        </property>
+                    </properties>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
