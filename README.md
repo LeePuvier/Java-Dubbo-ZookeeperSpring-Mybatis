@@ -57,7 +57,7 @@ Java-Dubbo-ZookeeperSpring-Mybatis
 
 ## 常用命令
 
-- 连接服务：telnet 127.0.0.1:8081
+- 连接服务：telnet 127.0.0.1 20880
 
 - 查看服务列表：ls
 
