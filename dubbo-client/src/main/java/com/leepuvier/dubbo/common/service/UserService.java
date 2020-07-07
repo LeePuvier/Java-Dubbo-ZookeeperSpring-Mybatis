@@ -2,6 +2,8 @@ package com.leepuvier.dubbo.common.service;
 
 import com.leepuvier.dubbo.common.domin.People;
 
+import java.util.List;
+
 /**
  * @Author : LeePuvier
  * @CreateTime : 2019/9/23  8:38 PM
@@ -9,7 +11,7 @@ import com.leepuvier.dubbo.common.domin.People;
  */
 
 public interface UserService {
-    People findUser();
+    List<People> findUser();
 
     People getUserById(int id);
 

@@ -11,6 +11,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -27,11 +28,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
     RedisTemplate redisTemplate;
 
     @Override
-    public People findUser() {
-        return userMapper.getOne(1);
+    public List<People> findUser() {
+        return userMapper.getAll();
     }
 
     /**
@@ -51,7 +53,7 @@ public class UserServiceImpl implements UserService {
         //缓存存在
         if (hasKey){
             People people = operations.get(key);
-            logger.info("-----------------> 缓存获取：" + people.toString());
+            logger.info("-----------------> 缓存获取：" + people.getName().toString());
             return people;
         }
 
@@ -59,7 +61,7 @@ public class UserServiceImpl implements UserService {
         People people = userMapper.getUserById(id);
         //插入缓存
         operations.set(key, people, 4, TimeUnit.HOURS);
-        logger.info("-----------------> 插入缓存：" + people.toString());
+        logger.info("-----------------> 插入缓存：" + people.getName().toString());
         return people;
     }
 

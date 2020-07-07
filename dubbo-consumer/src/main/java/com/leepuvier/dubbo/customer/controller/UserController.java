@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author : LeePuvier
@@ -23,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/getUser")
-    public People user(){
+    public List<People> user(){
         System.out.println("----------------------> 消费者服务调用成功");
         System.out.println("----------------------> " + userService.hashCode());
         return userService.findUser();
