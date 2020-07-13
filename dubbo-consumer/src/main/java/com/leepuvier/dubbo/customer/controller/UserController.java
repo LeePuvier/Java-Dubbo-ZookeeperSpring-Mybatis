@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/getUserById")
-    public People getUserById(int id){
+    public People getUserById(Integer id){
         return userService.getUserById(id);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserService {
     List<People> findUser();
 
-    People getUserById(int id);
+    People getUserById(Integer id);
 
     int addUser(People people);
 

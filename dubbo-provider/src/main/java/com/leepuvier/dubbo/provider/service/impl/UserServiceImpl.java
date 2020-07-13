@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public People getUserById(int id) {
+    public People getUserById(Integer id) {
         String key = "user_" + id;
         //ToDO :Redis缓存的读取
         ValueOperations<String, People> operations = redisTemplate.opsForValue();
