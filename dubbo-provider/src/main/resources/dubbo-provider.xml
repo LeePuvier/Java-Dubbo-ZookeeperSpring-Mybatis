@@ -28,6 +28,6 @@
     <dubbo:service interface="com.leepuvier.dubbo.common.service.DemoService" ref="demoService" timeout="1200000" owner="lipengjun"></dubbo:service>
 
     <!--监控中心-->
-    <dubbo:monitor protocol="registry" />
+    <!--<dubbo:monitor protocol="registry" />-->
 
 </beans>

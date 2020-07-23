@@ -23,5 +23,5 @@
     <!--<dubbo:annotation package="controller"/>-->
 
     <!--监控中心-->
-    <dubbo:monitor protocol="registry" />
+    <!--<dubbo:monitor protocol="registry" />-->
 </beans>

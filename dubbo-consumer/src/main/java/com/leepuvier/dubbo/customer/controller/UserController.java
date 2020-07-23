@@ -25,8 +25,6 @@ public class UserController {
 
     @GetMapping("/getUser")
     public List<People> user(){
-        System.out.println("----------------------> 消费者服务调用成功");
-        System.out.println("----------------------> " + userService.hashCode());
         return userService.findUser();
     }
 

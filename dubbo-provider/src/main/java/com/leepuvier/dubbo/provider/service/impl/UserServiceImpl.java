@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @CreateTime : 2019/9/23  8:53 PM
  * @ContentUse ：
  */
-
+@Service
 public class UserServiceImpl implements UserService {
 
     private static final com.alibaba.dubbo.common.logger.Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -46,22 +46,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public People getUserById(Integer id) {
         String key = "user_" + id;
-        //ToDO :Redis缓存的读取
-        ValueOperations<String, People> operations = redisTemplate.opsForValue();
+        ValueOperations<String, String> operations = redisTemplate.opsForValue();
         boolean hasKey = redisTemplate.hasKey(key);
 
         //缓存存在
         if (hasKey){
-            People people = operations.get(key);
-            logger.info("-----------------> 缓存获取：" + people.getName().toString());
-            return people;
+            String name = operations.get(key);
+            return userMapper.getUserById(id);
         }
 
         //从数据库获取
         People people = userMapper.getUserById(id);
         //插入缓存
-        operations.set(key, people, 4, TimeUnit.HOURS);
-        logger.info("-----------------> 插入缓存：" + people.getName().toString());
+        operations.set(key, people.getName(), 4, TimeUnit.HOURS);
         return people;
     }
 

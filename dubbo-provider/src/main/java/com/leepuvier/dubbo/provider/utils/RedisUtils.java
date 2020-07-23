@@ -2,6 +2,9 @@ package com.leepuvier.dubbo.provider.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -20,6 +23,24 @@ public class RedisUtils {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+
+    /**
+     * Redis Key 将RedisTemplate 默认序列化方式 JdkSerializationRedisSerializer 改为：StringRedisSerializer
+     * Redis Valuse 将RedisTemplate 默认序列化方式 JdkSerializationRedisSerializer 改为: Jackson2JsonRedisSerializer
+     * @param redisTemplate
+     */
+    @Autowired(required = false)
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        RedisSerializer stringSerializer = new StringRedisSerializer();
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        redisTemplate.setKeySerializer(stringSerializer);
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringSerializer);
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        this.redisTemplate = redisTemplate;
+
+    }
 
     /**
      * 写入缓存
